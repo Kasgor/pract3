@@ -21,3 +21,15 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task checkFileExists {
+    def filePath = 'module1/src/main/resources/qwerty.txt'
+    doLast {
+        def file = file(filePath)
+        if (file.exists()) {
+            println "File exists: ${filePath}"
+        } else {
+            throw new GradleException("File not found: ${filePath}")
+        }
+    }
+}

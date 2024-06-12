@@ -27,9 +27,19 @@ task checkFileExists {
     doLast {
         def file = file(filePath)
         if (file.exists()) {
-            println "File exists: ${filePath}"
+            println "File exists"
         } else {
-            throw new GradleException("File not found: ${filePath}")
+            throw new GradleException("File not found")
         }
+    }
+}
+
+
+task customBuildTask {
+    dependsOn checkFileExists
+    dependsOn ':module1:build'
+    dependsOn ':module2:build'
+    doLast {
+        println "Custom build task executed successfully."
     }
 }

@@ -1,2 +1,5 @@
 rootProject.name = 'pract3'
+include 'module1'
+include 'module2'
+include 'java-library'
 
